@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        val fab = findViewById<FloatingActionButton>(R.id.fab_bot)
 
         // App eka open weddi pennanna ona fragment eka (Dashboard)
         loadFragment(DashboardFragment())
@@ -29,6 +31,10 @@ class MainActivity : AppCompatActivity() {
                 loadFragment(fragment)
             }
             true
+        }
+
+        fab.setOnClickListener {
+            BotBottomSheetFragment().show(supportFragmentManager, "bot_sheet")
         }
     }
 

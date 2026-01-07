@@ -61,6 +61,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.activity.compose)
+
+    // TensorFlow Lite for disease detection
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
