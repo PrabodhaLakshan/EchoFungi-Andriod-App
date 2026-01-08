@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Myshroom" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Myshroom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,4 +12,28 @@
         <!-- Status bar color -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
-</resources>
+
+    <style name="ThemeOverlay.App.BottomSheetDialog"
+        parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <!-- Add any custom attributes here if needed -->
+    </style>
+
+<!-- In res/values/themes.xml -->
+    <!-- <style name="Theme.Myshroom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Other theme attributes -->
+    
+    <!-- In res/values/themes.xml -->
+    <!-- <style name="Theme.Myshroom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- ... -->
+        
+<!-- In your app or dialog theme -->
+<!-- <style name="Theme.Myshroom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/my_primary_color</item>
+        <item name="colorPrimaryDark">@color/my_primary_dark_color</item>
+        <item name="colorAccent">@color/my_accent_color</item>
+        <item name="colorSurface">@color/my_surface_color</item>
+        <item name="android:colorAccent">@color/my_accent_color
+        </item> <!-- For older Android versions -->
+    
+->
+    </resources>

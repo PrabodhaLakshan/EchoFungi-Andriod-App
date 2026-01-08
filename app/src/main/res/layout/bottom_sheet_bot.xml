@@ -6,29 +6,50 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mushroom Doctor Bot"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload a mushroom photo to detect disease and get advice."
-        android:textSize="14sp"
-        android:textColor="#666666"
-        android:paddingBottom="12dp" />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_mushroom"
+            android:tint="@color/purple_500" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mushroom Doctor Bot"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload a photo to detect diseases and get treatment tips."
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/ivPreview"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="12dp"
         android:scaleType="centerCrop"
-        android:background="#EFEFEF"
+        android:background="?attr/colorSurface"
         android:contentDescription="Selected image preview" />
 
     <LinearLayout
@@ -38,23 +59,34 @@
         android:gravity="end"
         android:paddingTop="12dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnChoose"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_weight="1"
-            android:text="Choose Image" />
+            android:text="Choose image"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:minHeight="56dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <Space
             android:layout_width="12dp"
             android:layout_height="wrap_content" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAnalyze"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_weight="1"
-            android:text="Analyze" />
+            android:text="Analyze"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:minHeight="56dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
     </LinearLayout>
 
     <ProgressBar
@@ -63,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:paddingTop="12dp" />
+        android:paddingTop="8dp" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -71,7 +103,8 @@
         android:layout_height="wrap_content"
         android:text="Result will appear here"
         android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorPrimary"
         android:paddingTop="12dp" />
 
     <TextView
@@ -79,9 +112,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="14sp"
-        android:textColor="#444444"
-        android:paddingTop="4dp" />
+        android:textSize="12sp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:paddingTop="8dp" />
 
 </LinearLayout>
-

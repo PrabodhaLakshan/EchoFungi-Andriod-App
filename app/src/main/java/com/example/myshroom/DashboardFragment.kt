@@ -20,6 +20,7 @@ class DashboardFragment : Fragment() {
     private val apiService = BlynkApiService()
     private val preferenceHelper by lazy { PreferenceHelper(requireContext()) }
     private var refreshTimer: Timer? = null
+    private var relayOn = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +36,10 @@ class DashboardFragment : Fragment() {
 
         binding.btnRefresh.setOnClickListener {
             fetchData()
+        }
+
+        binding.btnToggleRelay.setOnClickListener {
+            toggleRelay()
         }
 
         // Auto-refresh every 5 seconds if token is available
@@ -140,6 +145,33 @@ class DashboardFragment : Fragment() {
         super.onDestroyView()
         refreshTimer?.cancel()
         _binding = null
+    }
+
+    private fun toggleRelay() {
+        val token = preferenceHelper.getBlynkToken()
+        val relayPin = preferenceHelper.getPin(PreferenceHelper.RELAY_PIN)
+
+        if (token.isNullOrEmpty() || relayPin.isNullOrEmpty()) {
+            Toast.makeText(context, "Set Blynk token and relay pin in API tab first", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val newValue = if (relayOn) "0" else "1"
+        binding.btnToggleRelay.isEnabled = false
+        binding.tvRelayStatus.text = "Sending..."
+
+        CoroutineScope(Dispatchers.Main).launch {
+            val ok = withContext(Dispatchers.IO) {
+                apiService.setPinValue(token, relayPin, newValue)
+            }
+            relayOn = ok && newValue == "1"
+            binding.tvRelayStatus.text = if (ok) {
+                "Relay status: ${if (relayOn) "ON" else "OFF"}"
+            } else {
+                "Relay status: failed"
+            }
+            binding.btnToggleRelay.isEnabled = true
+        }
     }
 }
 

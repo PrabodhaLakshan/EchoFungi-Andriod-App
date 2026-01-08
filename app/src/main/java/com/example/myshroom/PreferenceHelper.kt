@@ -16,6 +16,7 @@ class PreferenceHelper(context: Context) {
         const val SCHEDULE_END_TIME = "schedule_end_time"
         const val AUTO_MODE_ENABLED = "auto_mode_enabled"
         const val MAX_TEMP = "max_temp"
+        const val DARK_MODE_ENABLED = "dark_mode_enabled"
     }
 
     fun saveBlynkToken(token: String) {
@@ -65,5 +66,15 @@ class PreferenceHelper(context: Context) {
     fun getMaxTemp(): Float {
         return prefs.getFloat(MAX_TEMP, 30f)
     }
+
+    fun setDarkModeEnabled(enabled: Boolean) {
+        prefs.edit().putBoolean(DARK_MODE_ENABLED, enabled).apply()
+    }
+
+    fun isDarkModeEnabled(): Boolean {
+        return prefs.getBoolean(DARK_MODE_ENABLED, false)
+    }
 }
+
+
 

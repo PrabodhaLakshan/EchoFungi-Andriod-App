@@ -22,7 +22,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true    // Code එකේ අනවශ්‍ය දේවල් අයින් කරයි
+            isShrinkResources = true  // පාවිච්චි නොවන images/xml අයින් කරයි
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
